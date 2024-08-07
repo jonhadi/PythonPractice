@@ -1,5 +1,5 @@
 
 class QuestionCard:
-    def __init__(self, card):
-        self.text = card["text"]
-        self.answer = card["answer"]
+    def __init__(self, c_text, c_answer):
+        self.text = c_text
+        self.answer = c_answer

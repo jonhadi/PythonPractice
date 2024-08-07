@@ -1,14 +1,17 @@
 from question_model import QuestionCard
 from data import question_data
+from quiz_brain import QuizBrain
 
 question_bank = []
-question_cu = []
 # Loop through data
-for position in range(0, len(question_data) - 1):
-    new_question = QuestionCard(question_data[position])
-    question_bank.append(new_question)
-print(question_bank[0].answer)
-
 for question in question_data:
-    new_question = question
-    question_cu.append(new_question)
+    new_question = QuestionCard(question["question"], question["correct_answer"])
+    # print(f'{new_question.text} | {new_question.answer}')
+    question_bank.append(new_question)
+
+quiz = QuizBrain(question_bank)
+while quiz.still_has_questions():
+    quiz.next_q()
+
+print(f"You've completed the quiz\n"
+      f"Your final score was: {quiz.score}/{quiz.question_number}")
